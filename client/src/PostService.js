@@ -1,13 +1,13 @@
 import axios from 'axios';
 //import { rejects } from 'assert';
 
-const url = 'http://localhost:5000/api/posts/';
+const url = 'api/posts/';
 
 class PostService {
 
     // GET
     static getPosts() {
-        return new Promise(async (resolve,rejects) => {
+        return new Promise(async (resolve,reject) => {
             try {
                const res = await axios.get(url);
                const data = res.data;
@@ -17,7 +17,7 @@ class PostService {
                    createdAt : new Date(post.createdAt)
                })));
             } catch(err) {
-                rejects(err);
+                reject(err);
             }
         });
     }
